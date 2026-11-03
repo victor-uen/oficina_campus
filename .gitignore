@@ -1,0 +1,12 @@
+target/
+node_modules/
+dados/
+*.log
+.idea/
+.vscode/
+*.iml
+__pycache__/
+.DS_Store
+Thumbs.db
+.env
+.env.*
