@@ -1,0 +1,72 @@
+Domain OficinaCampus {
+  Subdomain Cadastros
+}
+
+ContextMap {
+  contains Cadastros
+}
+
+// Contexto Cadastros: metadados de Controle achatados para leitura conceitual.
+BoundedContext Cadastros {
+  Aggregate Instrutor {
+    Entity Instrutor {
+      aggregateRoot
+      String id
+      String nome
+      String apresentacao
+      String especialidade
+      String contato nullable
+      String estado
+      long versao
+      Date criadoEm
+      Date atualizadoEm
+      Repository InstrutorRepository {
+        @Instrutor obter(String id);
+        List<@Instrutor> listar();
+        void salvar(@Instrutor agregado);
+      }
+    }
+  }
+  Aggregate Espaco {
+    Entity Espaco {
+      aggregateRoot
+      String id
+      String nome
+      String localizacao
+      String descricao nullable
+      Integer capacidade  // limita as oficinas presenciais e híbridas
+      String estado
+      long versao
+      Date criadoEm
+      Date atualizadoEm
+      Repository EspacoRepository {
+        @Espaco obter(String id);
+        List<@Espaco> listar();
+        void salvar(@Espaco agregado);
+      }
+    }
+  }
+  Aggregate Oficina {
+    Entity Oficina {
+      aggregateRoot
+      String id
+      String titulo
+      String apresentacao
+      String modalidade
+      Integer duracao
+      Integer limite  // presencial e híbrida: até a capacidade do Espaco
+      String data  // data e horário de início
+      String espaco nullable  // identidade de um Espaco; obrigatória exceto em oficinas online
+      List<String> instrutores notEmpty  // identidades de Instrutor
+      String estado
+      long versao
+      Date criadoEm
+      Date atualizadoEm
+      Repository OficinaRepository {
+        @Oficina obter(String id);
+        List<@Oficina> listar();
+        void salvar(@Oficina agregado);
+      }
+    }
+  }
+}

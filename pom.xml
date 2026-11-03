@@ -7,5 +7,10 @@
   <modules>
     <module>pai</module>
     <module>dominio-compartilhado</module>
+    <module>dominio-cadastros</module>
+    <module>aplicacao</module>
+    <module>infraestrutura</module>
+    <module>apresentacao-frontend</module>
+    <module>apresentacao-backend</module>
   </modules>
 </project>
