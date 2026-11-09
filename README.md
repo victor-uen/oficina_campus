@@ -3,7 +3,7 @@
 Projeto de Requisitos de Software e FCCPD.
 
 Equipe: Artur Antunes, Luca, Ricardo, Victor e João Cláudio.
-Partes integradas nesta etapa: Cadastros (3 funcionalidades e o calendário).
+Partes integradas nesta etapa: Cadastros, Recursos (7 funcionalidades e o calendário).
 
 A oficina é o centro do sistema: as fichas dos demais contextos se ligam a ela e
 aparecem nas abas da página da oficina.

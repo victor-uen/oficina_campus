@@ -1,9 +1,14 @@
 Domain OficinaCampus {
   Subdomain Cadastros
+  Subdomain Recursos
 }
 
 ContextMap {
   contains Cadastros
+  contains Recursos
+
+  // Cadastros fornece a identidade da oficina e publica a porta RegraOficina; os demais contextos guardam a identidade como referência.
+  Cadastros [U,OHS]->[D,CF] Recursos
 }
 
 // Contexto Cadastros: metadados de Controle achatados para leitura conceitual.
@@ -66,6 +71,86 @@ BoundedContext Cadastros {
         @Oficina obter(String id);
         List<@Oficina> listar();
         void salvar(@Oficina agregado);
+      }
+    }
+  }
+}
+
+// Contexto Recursos: metadados de Controle achatados para leitura conceitual.
+BoundedContext Recursos {
+  Aggregate FichaEquipamento {
+    Entity FichaEquipamento {
+      aggregateRoot
+      String id
+      String nome
+      String tipo
+      String instrucoes nullable
+      List<String> oficinas  // identidades das Oficinas reservadas, sem conflito de horário
+      String estado
+      long versao
+      Date criadoEm
+      Date atualizadoEm
+      Repository FichaEquipamentoRepository {
+        @FichaEquipamento obter(String id);
+        List<@FichaEquipamento> listar();
+        void salvar(@FichaEquipamento agregado);
+      }
+    }
+  }
+  Aggregate InstituicaoParceira {
+    Entity InstituicaoParceira {
+      aggregateRoot
+      String id
+      String nome
+      String modalidade
+      String contato nullable
+      List<String> oficinas  // identidades das Oficinas apoiadas
+      String estado
+      long versao
+      Date criadoEm
+      Date atualizadoEm
+      Repository InstituicaoParceiraRepository {
+        @InstituicaoParceira obter(String id);
+        List<@InstituicaoParceira> listar();
+        void salvar(@InstituicaoParceira agregado);
+      }
+    }
+  }
+  Aggregate KitMateriais {
+    Entity KitMateriais {
+      aggregateRoot
+      String id
+      String nome
+      String finalidade nullable
+      List<String> componentes
+      String oficina  // identidade da Oficina (Cadastros)
+      String estado
+      long versao
+      Date criadoEm
+      Date atualizadoEm
+      Repository KitMateriaisRepository {
+        @KitMateriais obter(String id);
+        List<@KitMateriais> listar();
+        void salvar(@KitMateriais agregado);
+      }
+    }
+  }
+  Aggregate RecursoAcessibilidade {
+    Entity RecursoAcessibilidade {
+      aggregateRoot
+      String id
+      String nome
+      String categoria
+      String orientacao
+      String oficina  // identidade da Oficina (Cadastros)
+      String estado
+      long versao
+      Date criadoEm
+      Date atualizadoEm
+      Repository RecursoAcessibilidadeRepository {
+        @RecursoAcessibilidade obter(String id);
+        List<@RecursoAcessibilidade> listar();
+        void salvar(@RecursoAcessibilidade agregado);
       }
     }
   }

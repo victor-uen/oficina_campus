@@ -1,0 +1,352 @@
+[
+  {
+    "id": "equipamentos",
+    "title": "Equipamentos",
+    "singular": "equipamento",
+    "owner": 3,
+    "group": "Atividades internas",
+    "summary": "Equipamentos da instituição e as oficinas em que estão reservados.",
+    "fields": [
+      {
+        "key": "nome",
+        "label": "Nome",
+        "kind": "text",
+        "min": 2,
+        "max": 80,
+        "required": true,
+        "options": [],
+        "hint": ""
+      },
+      {
+        "key": "tipo",
+        "label": "Tipo",
+        "kind": "select",
+        "min": 1,
+        "max": 100,
+        "required": true,
+        "options": [
+          "Audiovisual",
+          "Informática",
+          "Ferramenta",
+          "Outro"
+        ],
+        "hint": ""
+      },
+      {
+        "key": "instrucoes",
+        "label": "Instruções de uso",
+        "kind": "textarea",
+        "min": 0,
+        "max": 500,
+        "required": false,
+        "options": [],
+        "hint": ""
+      },
+      {
+        "key": "oficinas",
+        "label": "Reservado para",
+        "kind": "ref",
+        "min": 0,
+        "max": 64,
+        "required": false,
+        "options": [],
+        "hint": "Oficinas que usarão o equipamento. Não pode haver duas no mesmo horário.",
+        "ref": "oficinas",
+        "multiple": true
+      }
+    ],
+    "seeds": [
+      {
+        "nome": "Projetor portátil",
+        "tipo": "Audiovisual",
+        "instrucoes": "Conectar o cabo HDMI antes de ligar.",
+        "oficinas": [
+          "@oficinas:0"
+        ]
+      },
+      {
+        "nome": "Notebook de apoio",
+        "tipo": "Informática",
+        "instrucoes": "Carregar a bateria na véspera.",
+        "oficinas": [
+          "@oficinas:2"
+        ]
+      }
+    ],
+    "story": "Como equipe de recursos, quero manter os equipamentos da instituição e reservá-los para as oficinas, sem dois usos no mesmo horário.",
+    "activity": "Preparar a base",
+    "policy": "padrao",
+    "persona": "Marina",
+    "profiles": [
+      "organizacao",
+      "apoio"
+    ],
+    "community": false,
+    "communityStory": "",
+    "tab": "Recursos",
+    "create": true,
+    "edit": true,
+    "actions": [],
+    "menu": [
+      "organizacao"
+    ],
+    "archive": true
+  },
+  {
+    "id": "parceiras",
+    "title": "Instituições parceiras",
+    "singular": "instituição parceira",
+    "owner": 3,
+    "group": "Cadastros",
+    "summary": "Parceiros e as oficinas que apoiam.",
+    "fields": [
+      {
+        "key": "nome",
+        "label": "Nome",
+        "kind": "text",
+        "min": 2,
+        "max": 120,
+        "required": true,
+        "options": [],
+        "hint": ""
+      },
+      {
+        "key": "modalidade",
+        "label": "Modalidade de apoio",
+        "kind": "select",
+        "min": 1,
+        "max": 100,
+        "required": true,
+        "options": [
+          "Divulgação",
+          "Cultural",
+          "Institucional"
+        ],
+        "hint": ""
+      },
+      {
+        "key": "contato",
+        "label": "Informações de contato",
+        "kind": "textarea",
+        "min": 0,
+        "max": 300,
+        "required": false,
+        "options": [],
+        "hint": ""
+      },
+      {
+        "key": "oficinas",
+        "label": "Oficinas apoiadas",
+        "kind": "ref",
+        "min": 0,
+        "max": 64,
+        "required": false,
+        "options": [],
+        "hint": "Uma instituição pode apoiar várias oficinas.",
+        "ref": "oficinas",
+        "multiple": true
+      }
+    ],
+    "seeds": [
+      {
+        "nome": "Coletivo Horizonte",
+        "modalidade": "Cultural",
+        "contato": "parcerias@example.com",
+        "oficinas": [
+          "@oficinas:0",
+          "@oficinas:2"
+        ]
+      }
+    ],
+    "story": "Como equipe de recursos, quero manter as instituições parceiras e as oficinas que cada uma apoia.",
+    "activity": "Preparar a base",
+    "policy": "padrao",
+    "persona": "Marina",
+    "profiles": [
+      "organizacao",
+      "apoio"
+    ],
+    "community": false,
+    "communityStory": "",
+    "tab": "Recursos",
+    "create": true,
+    "edit": true,
+    "actions": [],
+    "menu": [
+      "organizacao"
+    ],
+    "archive": true
+  },
+  {
+    "id": "kits",
+    "title": "Kits de materiais",
+    "singular": "kit de materiais",
+    "owner": 3,
+    "group": "Oficina",
+    "summary": "O kit de materiais de cada oficina, com componentes descritos livremente.",
+    "fields": [
+      {
+        "key": "nome",
+        "label": "Nome",
+        "kind": "text",
+        "min": 2,
+        "max": 80,
+        "required": true,
+        "options": [],
+        "hint": ""
+      },
+      {
+        "key": "finalidade",
+        "label": "Finalidade",
+        "kind": "textarea",
+        "min": 0,
+        "max": 300,
+        "required": false,
+        "options": [],
+        "hint": ""
+      },
+      {
+        "key": "componentes",
+        "label": "Componentes",
+        "kind": "list",
+        "min": 1,
+        "max": 100,
+        "required": true,
+        "options": [],
+        "hint": "Pelo menos um componente. Até 100 caracteres por descrição."
+      },
+      {
+        "key": "oficina",
+        "label": "Oficina",
+        "kind": "ref",
+        "min": 1,
+        "max": 64,
+        "required": true,
+        "options": [],
+        "hint": "Escolha a oficina a que esta ficha pertence.",
+        "ref": "oficinas",
+        "multiple": false
+      }
+    ],
+    "seeds": [
+      {
+        "nome": "Kit de prototipação",
+        "finalidade": "Apoiar atividades rápidas de ideação.",
+        "componentes": [
+          "Bloco de notas adesivas",
+          "Canetas coloridas",
+          "Folhas de papel A4"
+        ],
+        "oficina": "@oficinas:0"
+      },
+      {
+        "nome": "Kit de observação e design",
+        "finalidade": "Materiais para os exercícios de observação do cotidiano.",
+        "componentes": [
+          "Cadernos de desenho",
+          "Lápis grafite",
+          "Réguas de 30 cm"
+        ],
+        "oficina": "@oficinas:2"
+      }
+    ],
+    "story": "Como equipe de recursos, quero manter o kit de materiais de cada oficina para registrar, em uma lista textual, o que precisa ser separado.",
+    "activity": "Organizar a realização",
+    "policy": "padrao",
+    "persona": "Beatriz",
+    "profiles": [
+      "organizacao",
+      "apoio"
+    ],
+    "community": false,
+    "communityStory": "",
+    "tab": "Recursos",
+    "create": true,
+    "edit": true,
+    "actions": [],
+    "menu": [],
+    "archive": true
+  },
+  {
+    "id": "acessibilidade",
+    "title": "Acessibilidade",
+    "singular": "recurso de acessibilidade",
+    "owner": 3,
+    "group": "Oficina",
+    "summary": "Recursos de acessibilidade previstos para cada oficina.",
+    "fields": [
+      {
+        "key": "nome",
+        "label": "Nome",
+        "kind": "text",
+        "min": 2,
+        "max": 80,
+        "required": true,
+        "options": [],
+        "hint": ""
+      },
+      {
+        "key": "categoria",
+        "label": "Categoria",
+        "kind": "select",
+        "min": 1,
+        "max": 100,
+        "required": true,
+        "options": [
+          "Visual",
+          "Auditiva",
+          "Mobilidade",
+          "Comunicação",
+          "Outra"
+        ],
+        "hint": ""
+      },
+      {
+        "key": "orientacao",
+        "label": "Orientação de utilização",
+        "kind": "textarea",
+        "min": 1,
+        "max": 500,
+        "required": true,
+        "options": [],
+        "hint": ""
+      },
+      {
+        "key": "oficina",
+        "label": "Oficina",
+        "kind": "ref",
+        "min": 1,
+        "max": 64,
+        "required": true,
+        "options": [],
+        "hint": "Oficina a que esta ficha pertence.",
+        "ref": "oficinas",
+        "multiple": false
+      }
+    ],
+    "seeds": [
+      {
+        "nome": "Materiais com fonte ampliada",
+        "categoria": "Visual",
+        "orientacao": "Disponibilizar uma versão com fonte ampliada e alto contraste.",
+        "oficina": "@oficinas:0"
+      }
+    ],
+    "story": "Como equipe de recursos, quero registrar os recursos de acessibilidade de cada oficina para orientar sua utilização.",
+    "activity": "Organizar a realização",
+    "policy": "padrao",
+    "persona": "Beatriz",
+    "profiles": [
+      "organizacao",
+      "apoio"
+    ],
+    "community": false,
+    "communityStory": "",
+    "tab": "Recursos",
+    "create": true,
+    "edit": true,
+    "actions": [],
+    "menu": [],
+    "archive": true
+  }
+]

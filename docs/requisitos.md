@@ -120,3 +120,76 @@ Como organizadora, quero manter os espaços com sua capacidade para escolher ond
 - A capacidade limita as oficinas presenciais e híbridas que usam o espaço. Reduzir a capacidade depois é permitido: as oficinas ativas com limite acima da nova capacidade mostram o alerta "Limite acima da capacidade do espaço" e precisam de ajuste na próxima edição.
 
 O estado inicial é **ATIVO**. Depois de arquivada, a ficha continua disponível para consulta. Para editar, restaure a ficha; os dados são mantidos.
+
+## Recursos (Luca)
+
+### Equipamentos (`equipamentos`)
+
+Como equipe de recursos, quero manter os equipamentos da instituição e reservá-los para as oficinas, sem dois usos no mesmo horário.
+
+| Campo | Regra |
+|---|---|
+| Nome | Obrigatório. 2 a 80 caracteres. |
+| Tipo | Obrigatório. Opções: Audiovisual, Informática, Ferramenta, Outro. |
+| Instruções de uso | Opcional. 0 a 500 caracteres. |
+| Reservado para | Opcional. Nenhuma ou várias fichas ativas de Oficinas, sem repetição. |
+
+**Persona:** Marina. **Onde fica:** aba Recursos da oficina e menu Atividades internas. Beatriz também usa esta tela.
+
+- O equipamento é um cadastro geral da instituição (menu Atividades internas) e pode ser reservado para várias oficinas.
+- Na aba Recursos de uma oficina, "Reservar equipamento" acrescenta a oficina ao equipamento, e "Cancelar reserva" a remove.
+- Conflito de agenda (409): o mesmo equipamento não pode estar reservado para duas oficinas ativas em horários sobrepostos. Remarcar ou restaurar uma oficina também confere as reservas.
+
+O estado inicial é **ATIVO**. Depois de arquivada, a ficha continua disponível para consulta. Para editar, restaure a ficha; os dados são mantidos.
+
+### Instituições parceiras (`parceiras`)
+
+Como equipe de recursos, quero manter as instituições parceiras e as oficinas que cada uma apoia.
+
+| Campo | Regra |
+|---|---|
+| Nome | Obrigatório. 2 a 120 caracteres. |
+| Modalidade de apoio | Obrigatório. Opções: Divulgação, Cultural, Institucional. |
+| Informações de contato | Opcional. 0 a 300 caracteres. |
+| Oficinas apoiadas | Opcional. Nenhuma ou várias fichas ativas de Oficinas, sem repetição. |
+
+**Persona:** Marina. **Onde fica:** aba Recursos da oficina e menu Cadastros. Beatriz também usa esta tela.
+
+- A instituição é um cadastro geral (menu Cadastros) e pode apoiar várias oficinas.
+- Na aba Recursos de uma oficina, "Adicionar instituição" acrescenta a oficina às apoiadas, e "Remover apoio" a retira.
+
+O estado inicial é **ATIVO**. Depois de arquivada, a ficha continua disponível para consulta. Para editar, restaure a ficha; os dados são mantidos.
+
+### Kits de materiais (`kits`)
+
+Como equipe de recursos, quero manter o kit de materiais de cada oficina para registrar, em uma lista textual, o que precisa ser separado.
+
+| Campo | Regra |
+|---|---|
+| Nome | Obrigatório. 2 a 80 caracteres. |
+| Finalidade | Opcional. 0 a 300 caracteres. |
+| Componentes | Obrigatório. Lista com pelo menos um item, cada um com até 100 caracteres. |
+| Oficina | Obrigatório. Ficha ativa de Oficinas. |
+
+**Persona:** Beatriz. **Onde fica:** aba Recursos da oficina.
+
+- Aparece na aba Recursos da oficina.
+
+O estado inicial é **ATIVO**. Depois de arquivada, a ficha continua disponível para consulta. Para editar, restaure a ficha; os dados são mantidos.
+
+### Acessibilidade (`acessibilidade`)
+
+Como equipe de recursos, quero registrar os recursos de acessibilidade de cada oficina para orientar sua utilização.
+
+| Campo | Regra |
+|---|---|
+| Nome | Obrigatório. 2 a 80 caracteres. |
+| Categoria | Obrigatório. Opções: Visual, Auditiva, Mobilidade, Comunicação, Outra. |
+| Orientação de utilização | Obrigatório. 1 a 500 caracteres. |
+| Oficina | Obrigatório. Ficha ativa de Oficinas. |
+
+**Persona:** Beatriz. **Onde fica:** aba Recursos da oficina.
+
+- Aparece na aba Recursos da oficina.
+
+O estado inicial é **ATIVO**. Depois de arquivada, a ficha continua disponível para consulta. Para editar, restaure a ficha; os dados são mantidos.
