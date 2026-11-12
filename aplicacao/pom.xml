@@ -15,6 +15,11 @@
     </dependency>
     <dependency>
       <groupId>br.edu.oficinacampus</groupId>
+      <artifactId>oficina-campus-dominio-relacionamento</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>br.edu.oficinacampus</groupId>
       <artifactId>oficina-campus-dominio-recursos</artifactId>
       <version>${project.version}</version>
     </dependency>

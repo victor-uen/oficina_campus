@@ -1,14 +1,17 @@
 Domain OficinaCampus {
   Subdomain Cadastros
   Subdomain Recursos
+  Subdomain Relacionamento
 }
 
 ContextMap {
   contains Cadastros
   contains Recursos
+  contains Relacionamento
 
   // Cadastros fornece a identidade da oficina e publica a porta RegraOficina; os demais contextos guardam a identidade como referência.
   Cadastros [U,OHS]->[D,CF] Recursos
+  Cadastros [U,OHS]->[D,CF] Relacionamento
 }
 
 // Contexto Cadastros: metadados de Controle achatados para leitura conceitual.
@@ -151,6 +154,90 @@ BoundedContext Recursos {
         @RecursoAcessibilidade obter(String id);
         List<@RecursoAcessibilidade> listar();
         void salvar(@RecursoAcessibilidade agregado);
+      }
+    }
+  }
+}
+
+// Contexto Relacionamento: metadados de Controle achatados para leitura conceitual.
+BoundedContext Relacionamento {
+  Aggregate FichaParticipante {
+    Entity FichaParticipante {
+      aggregateRoot
+      String id
+      String nome
+      String ^email
+      String telefone
+      String profissao
+      String observacoes nullable
+      String oficina  // identidade da Oficina (Cadastros)
+      String estado
+      long versao
+      Date criadoEm
+      Date atualizadoEm
+      Repository FichaParticipanteRepository {
+        @FichaParticipante obter(String id);
+        List<@FichaParticipante> listar();
+        void salvar(@FichaParticipante agregado);
+      }
+    }
+  }
+  Aggregate ManifestacaoInteresse {
+    Entity ManifestacaoInteresse {
+      aggregateRoot
+      String id
+      String nome
+      String ^email
+      String telefone
+      String profissao
+      String oficina  // identidade da Oficina (Cadastros)
+      String situacao nullable  // Pendente, Aceita ou Recusada; aceitar cria um participante
+      String estado
+      long versao
+      Date criadoEm
+      Date atualizadoEm
+      Repository ManifestacaoInteresseRepository {
+        @ManifestacaoInteresse obter(String id);
+        List<@ManifestacaoInteresse> listar();
+        void salvar(@ManifestacaoInteresse agregado);
+      }
+    }
+  }
+  Aggregate AvaliacaoExperiencia {
+    Entity AvaliacaoExperiencia {
+      aggregateRoot
+      String id
+      Integer nota
+      String aspecto
+      String comentario
+      String nome nullable
+      String oficina  // identidade da Oficina (Cadastros)
+      String estado
+      long versao
+      Date criadoEm
+      Date atualizadoEm
+      Repository AvaliacaoExperienciaRepository {
+        @AvaliacaoExperiencia obter(String id);
+        List<@AvaliacaoExperiencia> listar();
+        void salvar(@AvaliacaoExperiencia agregado);
+      }
+    }
+  }
+  Aggregate SolicitacaoAtendimento {
+    Entity SolicitacaoAtendimento {
+      aggregateRoot
+      String id
+      String assunto
+      String descricao
+      String categoria
+      String estado
+      long versao
+      Date criadoEm
+      Date atualizadoEm
+      Repository SolicitacaoAtendimentoRepository {
+        @SolicitacaoAtendimento obter(String id);
+        List<@SolicitacaoAtendimento> listar();
+        void salvar(@SolicitacaoAtendimento agregado);
       }
     }
   }

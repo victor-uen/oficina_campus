@@ -1,0 +1,383 @@
+[
+  {
+    "id": "participantes",
+    "title": "Participantes",
+    "singular": "participante",
+    "owner": 2,
+    "group": "Oficina",
+    "summary": "Quem participa de cada oficina, até o limite de vagas.",
+    "fields": [
+      {
+        "key": "nome",
+        "label": "Nome",
+        "kind": "text",
+        "min": 2,
+        "max": 100,
+        "required": true,
+        "options": [],
+        "hint": ""
+      },
+      {
+        "key": "email",
+        "label": "E-mail",
+        "kind": "email",
+        "min": 1,
+        "max": 254,
+        "required": true,
+        "options": [],
+        "hint": ""
+      },
+      {
+        "key": "telefone",
+        "label": "Telefone",
+        "kind": "tel",
+        "min": 8,
+        "max": 20,
+        "required": true,
+        "options": [],
+        "hint": "Com DDD. Ex.: (81) 99999-0000."
+      },
+      {
+        "key": "profissao",
+        "label": "Profissão",
+        "kind": "text",
+        "min": 2,
+        "max": 100,
+        "required": true,
+        "options": [],
+        "hint": ""
+      },
+      {
+        "key": "observacoes",
+        "label": "Observações",
+        "kind": "textarea",
+        "min": 0,
+        "max": 500,
+        "required": false,
+        "options": [],
+        "hint": ""
+      },
+      {
+        "key": "oficina",
+        "label": "Oficina",
+        "kind": "ref",
+        "min": 1,
+        "max": 64,
+        "required": true,
+        "options": [],
+        "hint": "Oficina a que esta ficha pertence.",
+        "ref": "oficinas",
+        "multiple": false
+      }
+    ],
+    "seeds": [
+      {
+        "nome": "Luiza Santos",
+        "email": "luiza@example.com",
+        "telefone": "(81) 99999-0001",
+        "profissao": "Designer",
+        "observacoes": "Interesse em experiências práticas.",
+        "oficina": "@oficinas:0"
+      },
+      {
+        "nome": "Rafael Souza",
+        "email": "rafael@example.com",
+        "telefone": "(81) 99999-0002",
+        "profissao": "Professor",
+        "observacoes": "",
+        "oficina": "@oficinas:2"
+      }
+    ],
+    "story": "Como equipe de relacionamento, quero manter os participantes de cada oficina, respeitando o limite de vagas.",
+    "activity": "Organizar a realização",
+    "policy": "padrao",
+    "persona": "Beatriz",
+    "profiles": [
+      "organizacao",
+      "apoio"
+    ],
+    "community": false,
+    "communityStory": "",
+    "tab": "Pessoas",
+    "create": true,
+    "edit": true,
+    "actions": [],
+    "menu": [],
+    "archive": true
+  },
+  {
+    "id": "interesses",
+    "title": "Manifestações de interesse",
+    "singular": "manifestação de interesse",
+    "owner": 2,
+    "group": "Oficina",
+    "summary": "Interesses enviados pelo portal, para aceitar ou recusar.",
+    "fields": [
+      {
+        "key": "nome",
+        "label": "Nome",
+        "kind": "text",
+        "min": 2,
+        "max": 100,
+        "required": true,
+        "options": [],
+        "hint": ""
+      },
+      {
+        "key": "email",
+        "label": "E-mail",
+        "kind": "email",
+        "min": 1,
+        "max": 254,
+        "required": true,
+        "options": [],
+        "hint": ""
+      },
+      {
+        "key": "telefone",
+        "label": "Telefone",
+        "kind": "tel",
+        "min": 8,
+        "max": 20,
+        "required": true,
+        "options": [],
+        "hint": "Com DDD. Ex.: (81) 99999-0000."
+      },
+      {
+        "key": "profissao",
+        "label": "Profissão",
+        "kind": "text",
+        "min": 2,
+        "max": 100,
+        "required": true,
+        "options": [],
+        "hint": ""
+      },
+      {
+        "key": "oficina",
+        "label": "Oficina",
+        "kind": "ref",
+        "min": 1,
+        "max": 64,
+        "required": true,
+        "options": [],
+        "hint": "Oficina a que esta ficha pertence.",
+        "ref": "oficinas",
+        "multiple": false
+      },
+      {
+        "key": "situacao",
+        "label": "Situação",
+        "kind": "select",
+        "min": 0,
+        "max": 100,
+        "required": false,
+        "options": [
+          "Pendente",
+          "Aceita",
+          "Recusada"
+        ],
+        "hint": "Definida ao aceitar ou recusar.",
+        "readonly": true
+      }
+    ],
+    "seeds": [
+      {
+        "nome": "Ana Lima",
+        "email": "ana.lima@example.com",
+        "telefone": "(81) 98888-0002",
+        "profissao": "Estudante de Sistemas",
+        "oficina": "@oficinas:0",
+        "situacao": "Pendente"
+      },
+      {
+        "nome": "Gabriel Costa",
+        "email": "gabriel@example.com",
+        "telefone": "(81) 98888-0003",
+        "profissao": "Fotógrafo",
+        "oficina": "@oficinas:2",
+        "situacao": "Pendente"
+      }
+    ],
+    "story": "Como organizadora, quero aceitar ou recusar as manifestações de interesse; ao aceitar, o participante entra na oficina.",
+    "activity": "Ouvir a comunidade",
+    "policy": "padrao",
+    "persona": "Marina",
+    "profiles": [
+      "organizacao",
+      "apoio"
+    ],
+    "community": true,
+    "communityStory": "Como aluno, quero manifestar interesse em uma oficina pelo portal, informando meus contatos, para ser incluído como participante.",
+    "tab": "Pessoas",
+    "create": false,
+    "edit": false,
+    "actions": [
+      "aceitar",
+      "recusar"
+    ],
+    "menu": [],
+    "archive": true
+  },
+  {
+    "id": "avaliacoes",
+    "title": "Avaliações",
+    "singular": "avaliação",
+    "owner": 2,
+    "group": "Oficina",
+    "summary": "O que os participantes acharam de cada oficina realizada.",
+    "fields": [
+      {
+        "key": "nota",
+        "label": "Nota",
+        "kind": "number",
+        "min": 1,
+        "max": 5,
+        "required": true,
+        "options": [],
+        "hint": ""
+      },
+      {
+        "key": "aspecto",
+        "label": "Aspecto",
+        "kind": "select",
+        "min": 1,
+        "max": 100,
+        "required": true,
+        "options": [
+          "Conteúdo da oficina",
+          "Condução do instrutor",
+          "Organização e espaço"
+        ],
+        "hint": ""
+      },
+      {
+        "key": "comentario",
+        "label": "Comentário",
+        "kind": "textarea",
+        "min": 5,
+        "max": 500,
+        "required": true,
+        "options": [],
+        "hint": ""
+      },
+      {
+        "key": "nome",
+        "label": "Nome opcional",
+        "kind": "text",
+        "min": 2,
+        "max": 100,
+        "required": false,
+        "options": [],
+        "hint": ""
+      },
+      {
+        "key": "oficina",
+        "label": "Oficina",
+        "kind": "ref",
+        "min": 1,
+        "max": 64,
+        "required": true,
+        "options": [],
+        "hint": "Escolha a oficina a que esta ficha pertence.",
+        "ref": "oficinas",
+        "multiple": false
+      }
+    ],
+    "seeds": [
+      {
+        "nota": 4,
+        "aspecto": "Conteúdo da oficina",
+        "comentario": "Encontrei facilmente as informações de que precisava.",
+        "nome": "",
+        "oficina": "@oficinas:3"
+      }
+    ],
+    "story": "Como equipe de relacionamento, quero registrar avaliações das oficinas realizadas para conhecer a percepção de quem participou.",
+    "activity": "Aprender e manter",
+    "policy": "padrao",
+    "persona": "Beatriz",
+    "profiles": [
+      "organizacao",
+      "apoio"
+    ],
+    "community": true,
+    "communityStory": "Como aluno, quero avaliar pelo portal uma oficina depois que ela acontecer, para contar como foi a experiência.",
+    "tab": "Pessoas",
+    "create": true,
+    "edit": true,
+    "actions": [],
+    "menu": [],
+    "archive": true
+  },
+  {
+    "id": "atendimentos",
+    "title": "Atendimentos",
+    "singular": "atendimento",
+    "owner": 2,
+    "group": "Atividades internas",
+    "summary": "Dúvidas e problemas enviados pela comunidade, para consulta da organização.",
+    "fields": [
+      {
+        "key": "assunto",
+        "label": "Assunto",
+        "kind": "text",
+        "min": 5,
+        "max": 120,
+        "required": true,
+        "options": [],
+        "hint": ""
+      },
+      {
+        "key": "descricao",
+        "label": "Descrição",
+        "kind": "textarea",
+        "min": 10,
+        "max": 1000,
+        "required": true,
+        "options": [],
+        "hint": ""
+      },
+      {
+        "key": "categoria",
+        "label": "Categoria",
+        "kind": "select",
+        "min": 1,
+        "max": 100,
+        "required": true,
+        "options": [
+          "Dúvida",
+          "Problema no portal",
+          "Outro"
+        ],
+        "hint": ""
+      }
+    ],
+    "seeds": [
+      {
+        "assunto": "Como enviar uma sugestão?",
+        "descricao": "Gostaria de sugerir um tema para uma próxima oficina.",
+        "categoria": "Dúvida"
+      }
+    ],
+    "story": "Como organizadora, quero consultar as dúvidas e os problemas enviados pela comunidade para acompanhar o que precisa de atenção.",
+    "activity": "Aprender e manter",
+    "policy": "padrao",
+    "persona": "Beatriz",
+    "profiles": [
+      "organizacao",
+      "apoio"
+    ],
+    "community": true,
+    "communityStory": "Como aluno, quero enviar pelo portal uma dúvida ou um problema para a organização.",
+    "tab": null,
+    "create": false,
+    "edit": false,
+    "actions": [],
+    "menu": [
+      "organizacao",
+      "apoio"
+    ],
+    "archive": false
+  }
+]

@@ -9,6 +9,7 @@
     <module>dominio-compartilhado</module>
     <module>dominio-cadastros</module>
     <module>dominio-recursos</module>
+    <module>dominio-relacionamento</module>
     <module>aplicacao</module>
     <module>infraestrutura</module>
     <module>apresentacao-frontend</module>
