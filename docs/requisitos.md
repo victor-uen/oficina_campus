@@ -193,3 +193,88 @@ Como equipe de recursos, quero registrar os recursos de acessibilidade de cada o
 - Aparece na aba Recursos da oficina.
 
 O estado inicial é **ATIVO**. Depois de arquivada, a ficha continua disponível para consulta. Para editar, restaure a ficha; os dados são mantidos.
+
+## Relacionamento (Ricardo)
+
+### Manifestações de interesse (`interesses`)
+
+Como organizadora, quero aceitar ou recusar as manifestações de interesse; ao aceitar, o participante entra na oficina.
+
+| Campo | Regra |
+|---|---|
+| Nome | Obrigatório. 2 a 100 caracteres. |
+| E-mail | Obrigatório. Formato de e-mail; não confirma existência nem exclusividade. |
+| Telefone | Obrigatório. De 8 a 15 dígitos, com DDD; aceita espaços, parênteses, hífen e "+". |
+| Profissão | Obrigatório. 2 a 100 caracteres. |
+| Oficina | Obrigatório. Ficha ativa de Oficinas. |
+| Situação | Definida pelo sistema; não aparece no formulário. Opções: Pendente, Aceita, Recusada. |
+
+**Persona:** Marina. **Onde fica:** aba Pessoas da oficina. Beatriz também usa esta tela.
+
+**Pelo portal (Lucas):** Como aluno, quero manifestar interesse em uma oficina pelo portal, informando meus contatos, para ser incluído como participante.
+
+- Lucas envia pelo botão "Tenho interesse" no cartão da oficina, informando somente nome, e-mail, telefone e profissão. Depois do envio, a tela avisa que ele receberá mais informações por e-mail (não há envio real).
+- A manifestação começa **Pendente**. Não é cadastrada nem editada pela organização: Marina ou Beatriz, na aba Pessoas da oficina, escolhem **Aceitar** ou **Recusar**.
+- Aceitar inclui a pessoa como participante da oficina, com os mesmos dados, e muda a situação para **Aceita**. Recusar muda para **Recusada**. Uma manifestação aceita ou recusada não muda mais de situação (409).
+- Não é possível manifestar interesse nem aceitar quando a oficina está arquivada, já aconteceu ou não tem vagas (409). No portal, o botão fica desativado com o texto "Vagas esgotadas".
+
+O estado inicial é **ATIVO**, com situação **Pendente**. Arquivar preserva a manifestação; para aceitar ou recusar, ela precisa estar ativa.
+
+### Participantes (`participantes`)
+
+Como equipe de relacionamento, quero manter os participantes de cada oficina, respeitando o limite de vagas.
+
+| Campo | Regra |
+|---|---|
+| Nome | Obrigatório. 2 a 100 caracteres. |
+| E-mail | Obrigatório. Formato de e-mail; não confirma existência nem exclusividade. |
+| Telefone | Obrigatório. De 8 a 15 dígitos, com DDD; aceita espaços, parênteses, hífen e "+". |
+| Profissão | Obrigatório. 2 a 100 caracteres. |
+| Observações | Opcional. 0 a 500 caracteres. |
+| Oficina | Obrigatório. Ficha ativa de Oficinas. |
+
+**Persona:** Beatriz. **Onde fica:** aba Pessoas da oficina.
+
+- As vagas ocupadas são os participantes ativos. Um novo participante, a troca de oficina ou a restauração exigem vaga (409 "Vagas esgotadas").
+- Arquivar um participante libera a vaga. Aparece na aba Pessoas da oficina.
+
+O estado inicial é **ATIVO**. Depois de arquivada, a ficha continua disponível para consulta. Para editar, restaure a ficha; os dados são mantidos.
+
+### Avaliações (`avaliacoes`)
+
+Como equipe de relacionamento, quero registrar avaliações das oficinas realizadas para conhecer a percepção de quem participou.
+
+| Campo | Regra |
+|---|---|
+| Nota | Obrigatório. Inteiro de 1 a 5. |
+| Aspecto | Obrigatório. Opções: Conteúdo da oficina, Condução do instrutor, Organização e espaço. |
+| Comentário | Obrigatório. 5 a 500 caracteres. |
+| Nome opcional | Opcional. 2 a 100 caracteres. |
+| Oficina | Obrigatório. Ficha ativa de Oficinas. |
+
+**Persona:** Beatriz. **Onde fica:** aba Pessoas da oficina.
+
+**Pelo portal (Lucas):** Como aluno, quero avaliar pelo portal uma oficina depois que ela acontecer, para contar como foi a experiência.
+
+- Só é aceita depois que a oficina acontece (409 antes do término). No portal, "Avaliar" aparece apenas nas oficinas realizadas. Aparece na aba Pessoas da oficina.
+
+O estado inicial é **ATIVO**. Depois de arquivada, a ficha continua disponível para consulta. Para editar, restaure a ficha; os dados são mantidos.
+
+### Atendimentos (`atendimentos`)
+
+Como organizadora, quero consultar as dúvidas e os problemas enviados pela comunidade para acompanhar o que precisa de atenção.
+
+| Campo | Regra |
+|---|---|
+| Assunto | Obrigatório. 5 a 120 caracteres. |
+| Descrição | Obrigatório. 10 a 1000 caracteres. |
+| Categoria | Obrigatório. Opções: Dúvida, Problema no portal, Outro. |
+
+**Persona:** Beatriz. **Onde fica:** menu Atividades internas. Envio feito pelo portal; Marina e Beatriz apenas consultam.
+
+**Pelo portal (Lucas):** Como aluno, quero enviar pelo portal uma dúvida ou um problema para a organização.
+
+- Lucas envia pelo botão "Atendimento", no topo do portal, ou "Tirar uma dúvida", no destaque da página. O formulário "Falar com a organização" pede assunto, descrição e categoria.
+- Marina e Beatriz **apenas consultam**, no menu Atividades internas: não cadastram, não editam e não arquivam (409 nas rotas da organização). A tela inicial de Beatriz mostra quantos atendimentos foram recebidos.
+
+O estado é **ATIVO** desde o envio e não muda: a ficha fica disponível somente para consulta.
