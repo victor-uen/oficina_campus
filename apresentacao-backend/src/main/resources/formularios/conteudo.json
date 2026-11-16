@@ -1,0 +1,335 @@
+[
+  {
+    "id": "materiais",
+    "title": "Materiais de apoio",
+    "singular": "material de apoio",
+    "owner": 4,
+    "group": "Oficina",
+    "summary": "Links de estudo de cada oficina.",
+    "fields": [
+      {
+        "key": "titulo",
+        "label": "Título",
+        "kind": "text",
+        "min": 3,
+        "max": 100,
+        "required": true,
+        "options": [],
+        "hint": ""
+      },
+      {
+        "key": "endereco",
+        "label": "Endereço do material",
+        "kind": "url",
+        "min": 1,
+        "max": 0,
+        "required": true,
+        "options": [],
+        "hint": "Informe uma URL HTTP ou HTTPS com host. O sistema não verifica a existência."
+      },
+      {
+        "key": "descricao",
+        "label": "Descrição",
+        "kind": "textarea",
+        "min": 0,
+        "max": 300,
+        "required": false,
+        "options": [],
+        "hint": ""
+      },
+      {
+        "key": "oficina",
+        "label": "Oficina",
+        "kind": "ref",
+        "min": 1,
+        "max": 64,
+        "required": true,
+        "options": [],
+        "hint": "Oficina a que esta ficha pertence.",
+        "ref": "oficinas",
+        "multiple": false
+      }
+    ],
+    "seeds": [
+      {
+        "titulo": "Documentação do Python",
+        "endereco": "https://docs.python.org/pt-br/3/",
+        "descricao": "Referência de linguagem e primeiros passos.",
+        "oficina": "@oficinas:0"
+      }
+    ],
+    "story": "Como organizadora de conteúdo, quero publicar links de apoio de cada oficina para orientar quem vai participar.",
+    "activity": "Orientar a comunidade",
+    "policy": "conteudo",
+    "persona": "Marina",
+    "profiles": [
+      "organizacao",
+      "apoio"
+    ],
+    "community": false,
+    "communityStory": "",
+    "tab": "Preparação",
+    "create": true,
+    "edit": true,
+    "actions": [],
+    "menu": [],
+    "archive": true
+  },
+  {
+    "id": "guias",
+    "title": "Guias de preparação",
+    "singular": "guia de preparação",
+    "owner": 4,
+    "group": "Oficina",
+    "summary": "Orientações claras antes de cada oficina.",
+    "fields": [
+      {
+        "key": "titulo",
+        "label": "Título",
+        "kind": "text",
+        "min": 3,
+        "max": 100,
+        "required": true,
+        "options": [],
+        "hint": ""
+      },
+      {
+        "key": "resumo",
+        "label": "Resumo",
+        "kind": "textarea",
+        "min": 0,
+        "max": 200,
+        "required": false,
+        "options": [],
+        "hint": ""
+      },
+      {
+        "key": "instrucoes",
+        "label": "Instruções",
+        "kind": "textarea",
+        "min": 10,
+        "max": 4000,
+        "required": true,
+        "options": [],
+        "hint": ""
+      },
+      {
+        "key": "oficina",
+        "label": "Oficina",
+        "kind": "ref",
+        "min": 1,
+        "max": 64,
+        "required": true,
+        "options": [],
+        "hint": "Escolha a oficina a que esta ficha pertence.",
+        "ref": "oficinas",
+        "multiple": false
+      }
+    ],
+    "seeds": [
+      {
+        "titulo": "Prepare seu ambiente de estudo",
+        "resumo": "Um roteiro simples para começar.",
+        "instrucoes": "1. Escolha um lugar confortável.\n2. Separe seu material.\n3. Leia as orientações da proposta.",
+        "oficina": "@oficinas:0"
+      }
+    ],
+    "story": "Como organizadora de conteúdo, quero publicar o guia de preparação de cada oficina para orientar quem vai participar.",
+    "activity": "Orientar a comunidade",
+    "policy": "conteudo",
+    "persona": "Marina",
+    "profiles": [
+      "organizacao",
+      "apoio"
+    ],
+    "community": false,
+    "communityStory": "",
+    "tab": "Preparação",
+    "create": true,
+    "edit": true,
+    "actions": [],
+    "menu": [],
+    "archive": true
+  },
+  {
+    "id": "leituras",
+    "title": "Leituras complementares",
+    "singular": "leitura complementar",
+    "owner": 4,
+    "group": "Oficina",
+    "summary": "Livros, capítulos e artigos indicados para cada oficina.",
+    "fields": [
+      {
+        "key": "titulo",
+        "label": "Título",
+        "kind": "text",
+        "min": 3,
+        "max": 150,
+        "required": true,
+        "options": [],
+        "hint": ""
+      },
+      {
+        "key": "autor",
+        "label": "Autor",
+        "kind": "text",
+        "min": 2,
+        "max": 150,
+        "required": true,
+        "options": [],
+        "hint": ""
+      },
+      {
+        "key": "tipo",
+        "label": "Tipo",
+        "kind": "select",
+        "min": 1,
+        "max": 100,
+        "required": true,
+        "options": [
+          "Livro",
+          "Capítulo",
+          "Artigo",
+          "Outro"
+        ],
+        "hint": ""
+      },
+      {
+        "key": "trecho",
+        "label": "Trecho indicado",
+        "kind": "text",
+        "min": 0,
+        "max": 150,
+        "required": false,
+        "options": [],
+        "hint": "Ex.: capítulos 1 e 2, páginas 15 a 40."
+      },
+      {
+        "key": "obrigatoriedade",
+        "label": "Obrigatoriedade",
+        "kind": "select",
+        "min": 1,
+        "max": 100,
+        "required": true,
+        "options": [
+          "Obrigatória",
+          "Opcional"
+        ],
+        "hint": ""
+      },
+      {
+        "key": "ordem",
+        "label": "Ordem sugerida",
+        "kind": "number",
+        "min": 1,
+        "max": 50,
+        "required": true,
+        "options": [],
+        "hint": ""
+      },
+      {
+        "key": "oficina",
+        "label": "Oficina",
+        "kind": "ref",
+        "min": 1,
+        "max": 64,
+        "required": true,
+        "options": [],
+        "hint": "Oficina a que esta ficha pertence.",
+        "ref": "oficinas",
+        "multiple": false
+      }
+    ],
+    "seeds": [
+      {
+        "titulo": "Pense em Python",
+        "autor": "Allen B. Downey",
+        "tipo": "Livro",
+        "trecho": "Capítulos 1 e 2",
+        "obrigatoriedade": "Obrigatória",
+        "ordem": 1,
+        "oficina": "@oficinas:0"
+      }
+    ],
+    "story": "Como organizadora de conteúdo, quero indicar leituras complementares para cada oficina, em ordem sugerida, para aprofundar o estudo de quem participa.",
+    "activity": "Orientar a comunidade",
+    "policy": "conteudo",
+    "persona": "Marina",
+    "profiles": [
+      "organizacao",
+      "apoio"
+    ],
+    "community": false,
+    "communityStory": "",
+    "tab": "Preparação",
+    "create": true,
+    "edit": true,
+    "actions": [],
+    "menu": [],
+    "archive": true
+  },
+  {
+    "id": "comunicados",
+    "title": "Comunicados",
+    "singular": "comunicado",
+    "owner": 4,
+    "group": "Atividades internas",
+    "summary": "Um mural de informações para a comunidade.",
+    "fields": [
+      {
+        "key": "titulo",
+        "label": "Título",
+        "kind": "text",
+        "min": 3,
+        "max": 100,
+        "required": true,
+        "options": [],
+        "hint": ""
+      },
+      {
+        "key": "mensagem",
+        "label": "Mensagem",
+        "kind": "textarea",
+        "min": 10,
+        "max": 2000,
+        "required": true,
+        "options": [],
+        "hint": ""
+      },
+      {
+        "key": "etiqueta",
+        "label": "Etiqueta informativa",
+        "kind": "text",
+        "min": 0,
+        "max": 40,
+        "required": false,
+        "options": [],
+        "hint": ""
+      }
+    ],
+    "seeds": [
+      {
+        "titulo": "Bem-vindos ao Oficina Campus",
+        "mensagem": "Um espaço para reunir ideias, orientações e informações sobre oficinas acadêmicas.",
+        "etiqueta": "Novidades"
+      }
+    ],
+    "story": "Como organizadora de conteúdo, quero publicar comunicados no mural para compartilhar informações gerais.",
+    "activity": "Orientar a comunidade",
+    "policy": "conteudo",
+    "persona": "Marina",
+    "profiles": [
+      "organizacao"
+    ],
+    "community": false,
+    "communityStory": "",
+    "tab": null,
+    "create": true,
+    "edit": true,
+    "actions": [],
+    "menu": [
+      "organizacao"
+    ],
+    "archive": true
+  }
+]

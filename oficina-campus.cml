@@ -2,16 +2,19 @@ Domain OficinaCampus {
   Subdomain Cadastros
   Subdomain Recursos
   Subdomain Relacionamento
+  Subdomain Conteudo
 }
 
 ContextMap {
   contains Cadastros
   contains Recursos
   contains Relacionamento
+  contains Conteudo
 
   // Cadastros fornece a identidade da oficina e publica a porta RegraOficina; os demais contextos guardam a identidade como referência.
   Cadastros [U,OHS]->[D,CF] Recursos
   Cadastros [U,OHS]->[D,CF] Relacionamento
+  Cadastros [U,OHS]->[D,CF] Conteudo
 }
 
 // Contexto Cadastros: metadados de Controle achatados para leitura conceitual.
@@ -238,6 +241,88 @@ BoundedContext Relacionamento {
         @SolicitacaoAtendimento obter(String id);
         List<@SolicitacaoAtendimento> listar();
         void salvar(@SolicitacaoAtendimento agregado);
+      }
+    }
+  }
+}
+
+// Contexto Conteudo: metadados de Controle achatados para leitura conceitual.
+BoundedContext Conteudo {
+  Aggregate MaterialApoio {
+    Entity MaterialApoio {
+      aggregateRoot
+      String id
+      String titulo
+      String endereco
+      String descricao nullable
+      String oficina  // identidade da Oficina (Cadastros)
+      String estado
+      long versao
+      Date criadoEm
+      Date atualizadoEm
+      Repository MaterialApoioRepository {
+        @MaterialApoio obter(String id);
+        List<@MaterialApoio> listar();
+        void salvar(@MaterialApoio agregado);
+      }
+    }
+  }
+  Aggregate GuiaPreparacao {
+    Entity GuiaPreparacao {
+      aggregateRoot
+      String id
+      String titulo
+      String resumo nullable
+      String instrucoes
+      String oficina  // identidade da Oficina (Cadastros)
+      String estado
+      long versao
+      Date criadoEm
+      Date atualizadoEm
+      Repository GuiaPreparacaoRepository {
+        @GuiaPreparacao obter(String id);
+        List<@GuiaPreparacao> listar();
+        void salvar(@GuiaPreparacao agregado);
+      }
+    }
+  }
+  Aggregate LeituraComplementar {
+    Entity LeituraComplementar {
+      aggregateRoot
+      String id
+      String titulo
+      String autor
+      String tipo
+      String trecho nullable
+      String obrigatoriedade
+      Integer ordem
+      String oficina  // identidade da Oficina (Cadastros)
+      String estado
+      long versao
+      Date criadoEm
+      Date atualizadoEm
+      Repository LeituraComplementarRepository {
+        @LeituraComplementar obter(String id);
+        List<@LeituraComplementar> listar();
+        void salvar(@LeituraComplementar agregado);
+      }
+    }
+  }
+  Aggregate Comunicado {
+    Entity Comunicado {
+      aggregateRoot
+      String id
+      String titulo
+      String mensagem
+      String etiqueta nullable
+      String estado
+      long versao
+      Date criadoEm
+      Date atualizadoEm
+      Repository ComunicadoRepository {
+        @Comunicado obter(String id);
+        List<@Comunicado> listar();
+        void salvar(@Comunicado agregado);
       }
     }
   }
