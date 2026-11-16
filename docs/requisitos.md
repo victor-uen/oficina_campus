@@ -278,3 +278,75 @@ Como organizadora, quero consultar as dúvidas e os problemas enviados pela comu
 - Marina e Beatriz **apenas consultam**, no menu Atividades internas: não cadastram, não editam e não arquivam (409 nas rotas da organização). A tela inicial de Beatriz mostra quantos atendimentos foram recebidos.
 
 O estado é **ATIVO** desde o envio e não muda: a ficha fica disponível somente para consulta.
+
+## Conteúdo (Victor)
+
+### Materiais de apoio (`materiais`)
+
+Como organizadora de conteúdo, quero publicar links de apoio de cada oficina para orientar quem vai participar.
+
+| Campo | Regra |
+|---|---|
+| Título | Obrigatório. 3 a 100 caracteres. |
+| Endereço do material | Obrigatório. URL HTTP ou HTTPS com host. |
+| Descrição | Opcional. 0 a 300 caracteres. |
+| Oficina | Obrigatório. Ficha ativa de Oficinas. |
+
+**Persona:** Marina. **Onde fica:** aba Preparação da oficina. Beatriz também usa esta tela.
+
+- Material de apoio é um **link**. Aparece na aba Preparação e, quando publicado, no cartão da oficina no portal.
+
+O estado inicial é **OCULTO**. A publicação é manual: só fichas **VISÍVEIS** aparecem no portal. Restaurar uma ficha arquivada a devolve como oculta.
+
+### Guias de preparação (`guias`)
+
+Como organizadora de conteúdo, quero publicar o guia de preparação de cada oficina para orientar quem vai participar.
+
+| Campo | Regra |
+|---|---|
+| Título | Obrigatório. 3 a 100 caracteres. |
+| Resumo | Opcional. 0 a 200 caracteres. |
+| Instruções | Obrigatório. 10 a 4000 caracteres. |
+| Oficina | Obrigatório. Ficha ativa de Oficinas. |
+
+**Persona:** Marina. **Onde fica:** aba Preparação da oficina. Beatriz também usa esta tela.
+
+- Aparece na aba Preparação e, quando publicado, no cartão da oficina no portal.
+
+O estado inicial é **OCULTO**. A publicação é manual: só fichas **VISÍVEIS** aparecem no portal. Restaurar uma ficha arquivada a devolve como oculta.
+
+### Leituras complementares (`leituras`)
+
+Como organizadora de conteúdo, quero indicar leituras complementares para cada oficina, em ordem sugerida, para aprofundar o estudo de quem participa.
+
+| Campo | Regra |
+|---|---|
+| Título | Obrigatório. 3 a 150 caracteres. |
+| Autor | Obrigatório. 2 a 150 caracteres. |
+| Tipo | Obrigatório. Opções: Livro, Capítulo, Artigo, Outro. |
+| Trecho indicado | Opcional. 0 a 150 caracteres. |
+| Obrigatoriedade | Obrigatório. Opções: Obrigatória, Opcional. |
+| Ordem sugerida | Obrigatório. Inteiro de 1 a 50. |
+| Oficina | Obrigatório. Ficha ativa de Oficinas. |
+
+**Persona:** Marina. **Onde fica:** aba Preparação da oficina. Beatriz também usa esta tela.
+
+- Diferente do material de apoio, a leitura indica um livro, capítulo ou artigo, com autor, trecho, obrigatoriedade e ordem sugerida. Aparece na aba Preparação, em ordem, e, quando publicada, no cartão da oficina no portal.
+
+O estado inicial é **OCULTO**. A publicação é manual: só fichas **VISÍVEIS** aparecem no portal. Restaurar uma ficha arquivada a devolve como oculta.
+
+### Comunicados (`comunicados`)
+
+Como organizadora de conteúdo, quero publicar comunicados no mural para compartilhar informações gerais.
+
+| Campo | Regra |
+|---|---|
+| Título | Obrigatório. 3 a 100 caracteres. |
+| Mensagem | Obrigatório. 10 a 2000 caracteres. |
+| Etiqueta informativa | Opcional. 0 a 40 caracteres. |
+
+**Persona:** Marina. **Onde fica:** menu Atividades internas.
+
+- Quando publicados, aparecem na aba Comunicados do portal.
+
+O estado inicial é **OCULTO**. A publicação é manual: só fichas **VISÍVEIS** aparecem no portal. Restaurar uma ficha arquivada a devolve como oculta.
